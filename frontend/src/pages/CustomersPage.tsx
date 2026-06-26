@@ -80,7 +80,7 @@ const CustomerDetailModal: React.FC<{
     <Modal isOpen={isOpen} onClose={onClose} title={`كشف حساب - ${customer.name}`} size="xl">
       <div className="space-y-5">
         {/* Summary */}
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <div className="bg-secondary-50 rounded-xl p-4 text-center">
             <p className="text-xs text-secondary-500 mb-1">إجمالي المبيعات</p>
             <p className="font-black text-secondary-900">{formatCurrency(invoices.reduce((s, i) => s + i.total, 0))}</p>
@@ -275,7 +275,7 @@ const CustomersPage: React.FC = () => {
       </div>
 
       {/* Summary Cards */}
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div className="card p-4 text-center">
           <p className="text-2xl font-black text-secondary-900">{formatNumber(customers.length)}</p>
           <p className="text-sm text-secondary-500">إجمالي العملاء</p>

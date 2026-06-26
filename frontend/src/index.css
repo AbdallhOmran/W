@@ -31,6 +31,9 @@
 }
 
 /* Base Styles */
+html, body {
+  @apply overflow-x-hidden max-w-full;
+}
 body {
   @apply bg-secondary-50 text-secondary-900 antialiased;
 }

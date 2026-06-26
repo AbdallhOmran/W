@@ -72,7 +72,7 @@ const CashPage: React.FC = () => {
       </div>
 
       {/* Summary Cards */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
         <div className="card p-4">
           <div className="flex items-center gap-3 mb-2">
             <div className="w-10 h-10 bg-success-50 rounded-xl flex items-center justify-center">

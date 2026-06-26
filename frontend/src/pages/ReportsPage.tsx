@@ -48,7 +48,7 @@ const ReportsPage: React.FC = () => {
       </div>
 
       {/* Summary Cards */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
         {[
           { label: 'إجمالي المبيعات', value: formatCurrency(mock.totalSales), color: 'bg-primary-50 text-primary-600', icon: DollarSign },
           { label: 'إجمالي الأرباح', value: formatCurrency(mock.totalProfit), color: 'bg-success-50 text-success-600', icon: TrendingUp },

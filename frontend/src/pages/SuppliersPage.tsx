@@ -125,7 +125,7 @@ const SuppliersPage: React.FC = () => {
             <input {...register('name')} className="form-input" placeholder="اسم المورد" />
             {errors.name && <p className="form-error">{errors.name.message}</p>}
           </div>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="form-group">
               <label className="form-label">الهاتف</label>
               <input {...register('phone')} className="form-input" dir="ltr" />
@@ -146,7 +146,7 @@ const SuppliersPage: React.FC = () => {
       {selectedSupplier && (
         <Modal isOpen={!!selectedSupplier} onClose={() => setSelectedSupplier(null)} title={`كشف حساب - ${selectedSupplier.name}`} size="lg">
           <div className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="card p-4 text-center">
                 <p className="text-xs text-secondary-500">إجمالي المشتريات</p>
                 <p className="font-black text-xl">{formatCurrency(supplierPurchases.reduce((s, p) => s + p.total, 0))}</p>
