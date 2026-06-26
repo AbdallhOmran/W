@@ -3,7 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import {
   LayoutDashboard, Package, Warehouse, ShoppingCart, Truck,
   Users, Building2, Wallet, BarChart3, BookOpen, Settings,
-  LogOut, Menu, X, ChevronRight, Bell, Store, Sun, Moon
+  LogOut, Menu, X, ChevronRight, Bell, Store
 } from 'lucide-react';
 import { useAuthStore } from '../../store/authStore';
 import { hasPermission, ROLE_LABELS } from '../../utils';
@@ -33,22 +33,6 @@ const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const { user, logout } = useAuthStore();
   const navigate = useNavigate();
-
-  const [darkMode, setDarkMode] = useState(() => {
-    return document.documentElement.classList.contains('dark');
-  });
-
-  const toggleDarkMode = () => {
-    if (darkMode) {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-      setDarkMode(false);
-    } else {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-      setDarkMode(true);
-    }
-  };
 
   const handleLogout = () => {
     logout();
@@ -117,7 +101,7 @@ const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   );
 
   return (
-    <div className="min-h-screen bg-secondary-50 flex">
+    <div className="min-h-screen bg-secondary-50 flex overflow-x-hidden w-full relative">
       {/* Desktop Sidebar */}
       <aside className="hidden md:flex flex-col w-64 bg-white border-l border-secondary-200 fixed h-full right-0 z-40 shadow-soft no-print">
         <SidebarContent />
@@ -133,9 +117,8 @@ const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
       {/* Mobile Sidebar */}
       <aside
-        className={`fixed right-0 top-0 h-full w-72 bg-white border-l border-secondary-200 z-50 md:hidden transition-transform duration-300 shadow-elevated no-print ${
-          sidebarOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
+        className={`fixed right-0 top-0 h-full w-72 bg-white border-l border-secondary-200 z-50 md:hidden transition-all duration-300 shadow-elevated no-print ${sidebarOpen ? 'translate-x-0' : 'translate-x-full invisible pointer-events-none'
+          }`}
       >
         <div className="absolute top-4 left-4">
           <button
@@ -149,7 +132,7 @@ const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 md:mr-64 min-h-screen flex flex-col">
+      <main className="flex-1 md:mr-64 min-h-screen flex flex-col min-w-0">
         {/* Top Header */}
         <header className="sticky top-0 z-30 bg-white/80 backdrop-blur-sm border-b border-secondary-200 px-4 md:px-6 py-3 flex items-center justify-between no-print">
           <button
@@ -164,17 +147,6 @@ const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           </div>
 
           <div className="flex items-center gap-3">
-            <button
-              onClick={toggleDarkMode}
-              className="btn-ghost btn-icon"
-              title={darkMode ? 'تفعيل الوضع المضيء' : 'تفعيل الوضع الداكن'}
-            >
-              {darkMode ? (
-                <Sun className="w-5 h-5 text-amber-500 hover:text-amber-400" />
-              ) : (
-                <Moon className="w-5 h-5 text-secondary-600 hover:text-secondary-800" />
-              )}
-            </button>
             <button className="btn-ghost btn-icon relative">
               <Bell className="w-5 h-5 text-secondary-600" />
               <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-danger-500 rounded-full" />

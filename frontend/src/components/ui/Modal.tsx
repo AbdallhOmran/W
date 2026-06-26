@@ -26,6 +26,15 @@ export const Modal: React.FC<ModalProps> = ({
   footer,
   size = 'md',
 }) => {
+  React.useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   return (
@@ -71,6 +80,15 @@ export const ConfirmDialog: React.FC<ConfirmDialogProps> = ({
   variant = 'danger',
   loading = false,
 }) => {
+  React.useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   const confirmClass = variant === 'danger' ? 'btn-danger' : variant === 'warning' ? 'btn-warning' : 'btn-primary';

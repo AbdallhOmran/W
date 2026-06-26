@@ -37,15 +37,6 @@ const ProtectedRoute: React.FC<{ children: React.ReactNode; requiredRole?: strin
 const App: React.FC = () => {
   const { isAuthenticated } = useAuthStore();
 
-  React.useEffect(() => {
-    const theme = localStorage.getItem('theme') || 'light';
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, []);
-
   return (
     <ToastProvider>
       <BrowserRouter>

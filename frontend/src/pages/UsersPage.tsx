@@ -207,7 +207,7 @@ const UsersPage: React.FC = () => {
             </div>
             {errors.password && <p className="form-error">{errors.password.message}</p>}
           </div>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="form-group">
               <label className="form-label">الدور *</label>
               <select {...register('role')} className="form-select">

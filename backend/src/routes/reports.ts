@@ -1,4 +1,5 @@
 import { Router, Response } from 'express';
+import bcrypt from 'bcryptjs';
 import { supabase } from '../lib/supabase';
 import { AuthRequest } from '../middleware/auth';
 
@@ -219,7 +220,6 @@ usersRouter.get('/', async (req: AuthRequest, res: Response): Promise<void> => {
 usersRouter.post('/', async (req: AuthRequest, res: Response): Promise<void> => {
   try {
     if (req.user?.role !== 'super_admin') { res.status(403).json({ success: false, message: 'غير مصرح' }); return; }
-    const bcrypt = await import('bcryptjs');
     const { name, email, password, role, branch_id, is_active } = req.body;
     const passwordHash = await bcrypt.hash(password, 12);
     const { data: branch } = await supabase.from('branches').select('id').limit(1).single();
@@ -240,7 +240,6 @@ usersRouter.put('/:id', async (req: AuthRequest, res: Response): Promise<void> =
     const { name, email, password, role, is_active } = req.body;
     const updateData: any = { name, email, role, is_active };
     if (password) {
-      const bcrypt = await import('bcryptjs');
       updateData.password_hash = await bcrypt.hash(password, 12);
     }
     const { data, error } = await supabase.from('users').update(updateData).eq('id', req.params.id).select('id, name, email, role, branch_id, is_active, created_at').single();

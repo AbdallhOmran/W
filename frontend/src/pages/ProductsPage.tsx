@@ -170,7 +170,7 @@ const ProductFormModal: React.FC<{
     >
       <form id="product-form" onSubmit={handleSubmit(onSubmit)} className="space-y-5">
         {/* Basic Info */}
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="form-group col-span-2">
             <label className="form-label">اسم الصنف *</label>
             <input {...register('name')} className="form-input" placeholder="مثال: قياس ضغط أوتوماتيك" />
@@ -217,7 +217,7 @@ const ProductFormModal: React.FC<{
             الأسعار والخصومات
           </h4>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="form-group">
               <label className="form-label">السعر الأساسي (شراء) *</label>
               <input {...register('base_price')} type="number" step="0.01" min="0" className="form-input" placeholder="0.00" />
@@ -234,7 +234,7 @@ const ProductFormModal: React.FC<{
           {/* Cash Price Row */}
           <div className="bg-blue-50 rounded-xl p-4 mt-3 space-y-3">
             <p className="text-xs font-bold text-blue-700 mb-2">💵 الكاش</p>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div className="form-group">
                 <label className="form-label text-xs">خصم الكاش %</label>
                 <input {...register('cash_discount_percent')} type="number" step="0.01" min="0" max="100" className="form-input text-sm" placeholder="0" />
@@ -260,7 +260,7 @@ const ProductFormModal: React.FC<{
           {/* Credit Price Row */}
           <div className="bg-orange-50 rounded-xl p-4 mt-3 space-y-3">
             <p className="text-xs font-bold text-orange-700 mb-2">📅 الآجل</p>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div className="form-group">
                 <label className="form-label text-xs">خصم الآجل %</label>
                 <input {...register('credit_discount_percent')} type="number" step="0.01" min="0" max="100" className="form-input text-sm" placeholder="0" />
