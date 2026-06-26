@@ -1,0 +1,1 @@
+export { cashBoxRouter } from './payments';
